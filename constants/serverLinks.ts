@@ -1,8 +1,9 @@
-// src/api/ServerLinks.js
+import env from "react-native-dotenv";
+
 
 class ServerLinks {
     private static BaseUrl = "https://api.themoviedb.org/3/";
-    public static ApiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmOGYyM2U0ODVlMTlmMzdlNTM0NTMyY2RlNzRiNjk2NSIsIm5iZiI6MTc0MzA5NTE3NC4yMzUwMDAxLCJzdWIiOiI2N2U1ODU4NmY4NDY3OTRlOTkxMGM0Y2IiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.QN8wsnEHNUkm1MFico0dy4ZerVyjtp_7yeo7H5fYus8"
+    public static ApiKey = env.API_KEY
   
   public static getHeaders(accept: string = "application/json") {
     return {

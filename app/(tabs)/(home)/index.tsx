@@ -90,7 +90,7 @@ export default function TabTwoScreen() {
         />
       </Appbar.Header>
       {loading ? (
-        <Text style={styles.loadingText}>Cargando...</Text>
+        <Text style={styles.loadingText}>Loading...</Text>
       ) : (
         <FlatList
           data={movies}
