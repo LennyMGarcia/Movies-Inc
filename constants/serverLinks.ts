@@ -1,6 +1,5 @@
 import env from "react-native-dotenv";
 
-
 class ServerLinks {
     private static BaseUrl = "https://api.themoviedb.org/3/";
     public static ApiKey = env.API_KEY
