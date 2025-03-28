@@ -1,15 +1,23 @@
-import env from "react-native-dotenv";
-
 
 class ServerLinks {
     private static BaseUrl = "https://api.themoviedb.org/3/";
-    public static ApiKey = env.API_KEY
+    public static ApiKey = process.env.EXPO_PUBLIC_API_KEY
   
   public static getHeaders(accept: string = "application/json") {
     return {
       'Authorization': `Bearer ${this.ApiKey}`,
       'Accept': accept, 
     };
+  }
+
+  public static createGuestSession() {
+    const url = `authentication/guest_session/new`; 
+    return `${this.BaseUrl}${url}`;
+  }
+
+  public static rateMovie(movieId: number, sessionId: string) {
+    const url = `movie/${movieId}/rating?guest_session_id=${sessionId}`; 
+    return `${this.BaseUrl}${url}`;
   }
 
   public static getPopularMovies(minDate: string, maxDate: string) {

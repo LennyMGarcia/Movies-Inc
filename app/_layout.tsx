@@ -9,6 +9,9 @@ import 'react-native-reanimated';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { PaperProvider } from 'react-native-paper';
 import { theme } from '../theme/index'
+import { Provider } from 'react-redux';
+import { store } from '@/store/movieStore';
+
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,11 +34,13 @@ export default function RootLayout() {
 
   return (
     <PaperProvider theme={theme}>
+      <Provider store={store}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
+      </Provider>
     </PaperProvider>
   );
 }
