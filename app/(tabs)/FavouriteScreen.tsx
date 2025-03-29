@@ -11,7 +11,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 const FavouriteScreen = () => {
   const { movies, loading } = useUpcomingMovies();
-  const favoriteIds = useSelector((state: RootState) => state.Favourite.ids);
+  const favoriteIds = useSelector((state: RootState) => state.favourites.ids);
 
   const favoriteMovies = movies.filter((movie) => favoriteIds.includes(Number(movie.id)));
 

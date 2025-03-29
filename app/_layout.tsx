@@ -1,4 +1,4 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { ExpoRouter } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -10,7 +10,8 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import { PaperProvider } from 'react-native-paper';
 import { theme } from '../theme/index'
 import { Provider } from 'react-redux';
-import { store } from '@/store/movieStore';
+import { persistor, store } from '@/store/movieStore';
+import { PersistGate } from 'redux-persist/integration/react';
 
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -33,14 +34,17 @@ export default function RootLayout() {
   }
 
   return (
+    
     <PaperProvider theme={theme}>
       <Provider store={store}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" options={{ headerShown: false }}/>
-        <Stack.Screen name="details/[id]"  options={{ headerShown: false, }}/>
-      </Stack>
-      <StatusBar style="auto" />
+        <PersistGate loading={null} persistor={persistor}>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" options={{ headerShown: false }} />
+            <Stack.Screen name="details/[id]" options={{ headerShown: false, }} />
+          </Stack>
+          <StatusBar style="auto" />
+        </PersistGate>
       </Provider>
     </PaperProvider>
   );

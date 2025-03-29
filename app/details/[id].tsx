@@ -13,10 +13,8 @@ import { useRecommendations } from '@/hooks/useRecommendation';
 import { useMovieDetails } from '@/hooks/useMovieDetails';
 import FavouriteButton from '@/components/FavouriteButton';
 import BackButton from '@/components/backButton';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import ScreenContainer from '@/components/ScreenContainer';
 import { useTheme } from 'react-native-paper';
-
 
 export default function DetailsScreen() {
     const { width, height } = Dimensions.get("window");
@@ -99,7 +97,7 @@ export default function DetailsScreen() {
             
             <Image
                 source={{ uri: `${imageUrl}${movie?.poster_path}` }}
-                style={{ width, height: height * 0.60, resizeMode: "cover", borderBottomLeftRadius: 50, borderBottomRightRadius: 50 }}
+                style={{ width, height: height * 0.60, ...styles.detailImage }}
             />
 
             <Text style={styles.title}>{movie?.title}</Text>
@@ -153,6 +151,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    detailImage:{
+        resizeMode: "cover", 
+        borderBottomLeftRadius: 50, 
+        borderBottomRightRadius: 50,
+        
     },
     movieDetails: {
         fontSize: 18,

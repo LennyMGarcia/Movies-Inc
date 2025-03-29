@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         width: 200,
         height: 250,
         borderRadius: 5,
+        objectFit:"contain"
     },
     recommendedMovie: {
         textAlign: 'center',

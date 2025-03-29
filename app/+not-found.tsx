@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: 'black',
+    backgroundColor: '#1a1a1a',
   },
   errorText: {
     color: 'white',

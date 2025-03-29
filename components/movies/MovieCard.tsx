@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
         height: 200,
         borderRadius: 8,
         marginRight: 12,
+        objectFit:"contain"
     },
     textContainer: {
         flex: 1,

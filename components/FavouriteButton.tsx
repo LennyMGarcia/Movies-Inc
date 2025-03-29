@@ -15,7 +15,7 @@ interface FavouriteButtonProps {
 
 const FavouriteButton: React.FC<FavouriteButtonProps> = ({ movieId, size, top, right }) => {
   const dispatch = useDispatch();
-  const favoriteIds = useSelector((state: RootState) => state.Favourite.ids); 
+  const favoriteIds = useSelector((state: RootState) => state.favourites.ids); 
 
   const isFavorite = favoriteIds.includes(movieId);
 
