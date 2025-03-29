@@ -14,17 +14,22 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
+        
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
+            backgroundColor: '#111', 
           },
-          default: {},
+          default: {
+            backgroundColor: '#111', 
+          },
         }),
+        
       }}>
        <Tabs.Screen
         name="(home)"
@@ -34,10 +39,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="search"
+        name="FavouriteScreen"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Favourite',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="heart.fill" color={color} />,
         }}
       />
      

@@ -1,4 +1,3 @@
-import { CastMember, Movie, RecommendedMovie } from '@/Types/movieInterfaces';
 import ServerLinks from '@/api/serverLinks';
 import CastList from '@/components/movies/CastList';
 import NotificationSnackbar from '@/components/NotificationSnackBar';
@@ -12,6 +11,8 @@ import StarRating from 'react-native-star-rating-widget';
 import { useCast } from '@/hooks/useCast';
 import { useRecommendations } from '@/hooks/useRecommendation';
 import { useMovieDetails } from '@/hooks/useMovieDetails';
+import FavouriteButton from '@/components/FavouriteButton';
+import BackButton from '@/components/backButton';
 
 export default function DetailsScreen() {
     const { width, height } = Dimensions.get("window");
@@ -26,7 +27,8 @@ export default function DetailsScreen() {
     const { cast } = useCast(item.id);
     const { recommendations } = useRecommendations(item.id);
 
-    const displayRating = rating / 2;
+    const displayRating = Math.round(rating / 2); 
+
 
     const imageUrl = "https://image.tmdb.org/t/p/w200";
 
@@ -73,7 +75,8 @@ export default function DetailsScreen() {
     };
 
     const handleRatingChange = async (newDisplayRating: number) => {
-        const newRating = newDisplayRating * 2;
+        const newRating = Math.round(newDisplayRating * 2); 
+
         setRating(newRating);
         await submitRating(Number(item.id), newRating)
     };
@@ -88,6 +91,9 @@ export default function DetailsScreen() {
 
     return (
         <ScrollView style={styles.container}>
+            <BackButton />
+            <FavouriteButton movieId={Number(item.id)} />
+            
             <Image
                 source={{ uri: `${imageUrl}${movie?.poster_path}` }}
                 style={{ width, height: height * 0.60, resizeMode: "cover", borderBottomLeftRadius: 50, borderBottomRightRadius: 50 }}

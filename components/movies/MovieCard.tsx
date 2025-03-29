@@ -4,6 +4,7 @@ import { Card, Title, Paragraph, Button } from 'react-native-paper';
 import { StarRatingDisplay } from "react-native-star-rating-widget";
 import { Movie } from '@/Types/movieInterfaces';
 import { useRouter } from 'expo-router';
+import FavouriteButton from '../FavouriteButton';
 
 const MovieCard = ({ item }: { item: Movie }) => {
     const router = useRouter();
@@ -11,6 +12,8 @@ const MovieCard = ({ item }: { item: Movie }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Card style={styles.card}>
+                <FavouriteButton movieId={Number(item.id)} />
+
                 <View style={styles.cardContent}>
                     <Image
                         source={{ uri: `https://image.tmdb.org/t/p/w500${item.poster_path}` }}
@@ -51,6 +54,7 @@ const MovieCard = ({ item }: { item: Movie }) => {
 
 const styles = StyleSheet.create({
     card: {
+        position: 'relative', 
         backgroundColor: '#1E1E1E',
         marginVertical: 8,
         marginHorizontal: 12,
