@@ -7,6 +7,7 @@ import MovieList from '@/components/movies/MovieList';
 import { useUpcomingMovies } from '@/hooks/useUpcomingMovies';
 import { RootState } from '@/store/movieStore';
 import BackButton from '@/components/backButton';
+import ScreenContainer from '@/components/ScreenContainer';
 
 const FavouriteScreen = () => {
   const { movies, loading } = useUpcomingMovies();
@@ -15,9 +16,8 @@ const FavouriteScreen = () => {
   const favoriteMovies = movies.filter((movie) => favoriteIds.includes(Number(movie.id)));
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <ScreenContainer style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor:"#121212" }}>
-      <BackButton />
         <Appbar.Header>
           <Appbar.Content
             title={
@@ -37,7 +37,7 @@ const FavouriteScreen = () => {
           <MovieList movies={favoriteMovies} loading={loading} title='Favourites Movies'/>
         )}
       </View>
-    </SafeAreaView>
+    </ScreenContainer>
   );
 };
 

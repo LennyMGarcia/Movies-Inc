@@ -1,6 +1,6 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Snackbar } from "react-native-paper";
+import { StyleSheet } from "react-native";
+import { Snackbar, Portal } from "react-native-paper";
 
 interface NotificationSnackbarProps {
   message: string;
@@ -11,12 +11,12 @@ interface NotificationSnackbarProps {
 
 const NotificationSnackbar: React.FC<NotificationSnackbarProps> = ({
   message,
-  color = "green", 
+  color = "green",
   visible,
   onDismiss,
 }) => {
   return (
-    <View style={styles.container}>
+    <Portal>
       <Snackbar
         visible={visible}
         onDismiss={onDismiss}
@@ -25,25 +25,21 @@ const NotificationSnackbar: React.FC<NotificationSnackbarProps> = ({
           onPress: () => {
             console.log("Undo action");
           },
-          color: "#FFFFFF", 
+          color: "#FFFFFF",
         }}
-        style={[styles.snackbar, { backgroundColor: color }]} 
+        style={[styles.snackbar, { backgroundColor: color }]}
       >
         {message}
       </Snackbar>
-    </View>
+    </Portal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center", 
-    marginBottom: 0, 
-  },
   snackbar: {
-    borderRadius: 5, 
+    borderRadius: 5,
   },
 });
 
 export default NotificationSnackbar;
+

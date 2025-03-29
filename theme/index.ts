@@ -5,10 +5,10 @@ const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#415A77', 
+    primary: '#415ACF', 
     accent: '#778DA9',  
     background: '#0D1B2A',  
-    surface: '#1B263B', 
+    surface: '#1B265B', 
     text: '#E0E1DD', 
     placeholder: '#E0E1DD',  
     notification: '#FF5722',  

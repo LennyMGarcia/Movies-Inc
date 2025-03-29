@@ -13,6 +13,10 @@ import { useRecommendations } from '@/hooks/useRecommendation';
 import { useMovieDetails } from '@/hooks/useMovieDetails';
 import FavouriteButton from '@/components/FavouriteButton';
 import BackButton from '@/components/backButton';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import ScreenContainer from '@/components/ScreenContainer';
+import { useTheme } from 'react-native-paper';
+
 
 export default function DetailsScreen() {
     const { width, height } = Dimensions.get("window");
@@ -22,6 +26,7 @@ export default function DetailsScreen() {
     const [snackbarColor, setSnackbarColor] = useState("green");
 
     useGuestSession();
+    const { colors } = useTheme(); 
 
     const { movie, loading, rating, setRating } = useMovieDetails(item.id);
     const { cast } = useCast(item.id);
@@ -76,7 +81,6 @@ export default function DetailsScreen() {
 
     const handleRatingChange = async (newDisplayRating: number) => {
         const newRating = Math.round(newDisplayRating * 2); 
-
         setRating(newRating);
         await submitRating(Number(item.id), newRating)
     };
@@ -90,9 +94,10 @@ export default function DetailsScreen() {
     }
 
     return (
+        <ScreenContainer style={{ flex: 1 }}>
         <ScrollView style={styles.container}>
             <BackButton />
-            <FavouriteButton movieId={Number(item.id)} />
+            <FavouriteButton movieId={Number(item.id)} size={35} top={30} />
             
             <Image
                 source={{ uri: `${imageUrl}${movie?.poster_path}` }}
@@ -113,7 +118,7 @@ export default function DetailsScreen() {
 
             <Text style={styles.overview}>{movie?.overview}</Text>
             <View style={styles.ratingContainer}>
-                <View style={styles.ratingCircle}>
+                <View style={{...styles.ratingSquare, backgroundColor: colors.primary,}}>
                     <Text style={styles.ratingText}>{rating?.toFixed(1)}</Text>
                 </View>
                 <StarRating
@@ -136,6 +141,7 @@ export default function DetailsScreen() {
             />
 
         </ScrollView>
+    </ScreenContainer>
     );
 }
 
@@ -182,8 +188,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 5,
     },
-    ratingCircle: {
-        backgroundColor: '#415A77',
+    ratingSquare: {
+
         borderRadius: 5,
         padding: 5,
     },

@@ -5,12 +5,16 @@ const imageUrl = "https://image.tmdb.org/t/p/w200";
 
 const RecommendedMovies = ({ recommendations }: { recommendations: RecommendedMovie[] }) => {
     if (!recommendations || recommendations.length === 0) {
-        return <Text style={{ color: "white" }}>No recommendations available.</Text>;
+        return (
+            <View style={{ marginBottom: 50 }}>
+                <Text style={{ color: "white" }}>No recommendations available.</Text>
+            </View>
+        )
     }
 
     const renderRecommendationItem = ({ item }: { item: RecommendedMovie }) => (
         <View style={styles.recommendationItem}>
-            <Image source={{  uri: item.poster_path ?  `${imageUrl}${item.poster_path}` : 'https://i.ibb.co/HDq2F3vx/no-Poster-Available.webp' }} style={styles.recommendationImage} />
+            <Image source={{ uri: item.poster_path ? `${imageUrl}${item.poster_path}` : 'https://i.ibb.co/HDq2F3vx/no-Poster-Available.webp' }} style={styles.recommendationImage} />
             <Text style={styles.recommendedMovie}>
                 {item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}
             </Text>

@@ -8,7 +8,7 @@ const BackButton = () => {
 
   return (
     <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-      <Icon name="arrowleft" size={24} color="white" />
+      <Icon name="arrowleft" size={35} color="white" />
     </TouchableOpacity>
   );
 };
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   button: {
     position: 'absolute',
     left: 20,
-    top: 20,
+    top: 30,
     zIndex: 10,
   },
 });

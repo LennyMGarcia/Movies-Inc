@@ -8,9 +8,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 interface FavouriteButtonProps {
   movieId: number; 
+  size?: number,
+  top?: number,
+  right?:number ,
 }
 
-const FavouriteButton: React.FC<FavouriteButtonProps> = ({ movieId }) => {
+const FavouriteButton: React.FC<FavouriteButtonProps> = ({ movieId, size, top, right }) => {
   const dispatch = useDispatch();
   const favoriteIds = useSelector((state: RootState) => state.Favourite.ids); 
 
@@ -21,9 +24,9 @@ const FavouriteButton: React.FC<FavouriteButtonProps> = ({ movieId }) => {
   };
 
   return (
-    <TouchableOpacity onPress={handlePress} style={styles.button}>
+    <TouchableOpacity onPress={handlePress} style={{...styles.button, top: top ?? 0, right: right ?? 0,}}>
       <View style={styles.iconContainer}>
-        <Icon style={{fontSize:25}} name={isFavorite ? 'heart' : 'hearto'} size={30} color={isFavorite ? 'red' : 'white'} />
+        <Icon style={{fontSize:size ?? 25}} name={isFavorite ? 'heart' : 'hearto'} size={30} color={isFavorite ? 'red' : 'white'} />
       </View>
     </TouchableOpacity>
   );
@@ -32,8 +35,6 @@ const FavouriteButton: React.FC<FavouriteButtonProps> = ({ movieId }) => {
 const styles = StyleSheet.create({
   button: {
     position: 'absolute',
-    top: 0,
-    right: 0,
     height:500,
     zIndex: 10,
   },

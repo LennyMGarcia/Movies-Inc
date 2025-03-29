@@ -12,6 +12,7 @@ const MAPPING = {
   'house.fill': 'home',
   'paperplane.fill': 'send',
   'chevron.left.forwardslash.chevron.right': 'code',
+  'heart': 'favorite',
   'chevron.right': 'chevron-right',
 } as Partial<
   Record<

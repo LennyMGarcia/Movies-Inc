@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
-
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
@@ -32,7 +32,7 @@ export default function TabLayout() {
         
       }}>
        <Tabs.Screen
-        name="(home)"
+        name="index"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
@@ -42,7 +42,7 @@ export default function TabLayout() {
         name="FavouriteScreen"
         options={{
           title: 'Favourite',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="heart.fill" color={color} />,
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="heart-multiple" size={24} color={color} />,
         }}
       />
      

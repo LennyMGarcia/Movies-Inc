@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, SafeAreaView } from 'react-native';
-import { Card, Title, Paragraph, Button } from 'react-native-paper';
+import { Card, Title, Paragraph, Button, useTheme } from 'react-native-paper';
 import { StarRatingDisplay } from "react-native-star-rating-widget";
 import { Movie } from '@/Types/movieInterfaces';
 import { useRouter } from 'expo-router';
@@ -8,6 +8,7 @@ import FavouriteButton from '../FavouriteButton';
 
 const MovieCard = ({ item }: { item: Movie }) => {
     const router = useRouter();
+    const { colors } = useTheme();
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -27,7 +28,7 @@ const MovieCard = ({ item }: { item: Movie }) => {
                         </Paragraph>
 
                         <View style={styles.ratingContainer}>
-                            <View style={styles.ratingCircle}>
+                            <View style={{ ...styles.ratingSquare, backgroundColor: colors.primary }}>
                                 <Text style={styles.ratingText}>{(item.vote_average).toFixed(1)}</Text>
                             </View>
 
@@ -41,7 +42,7 @@ const MovieCard = ({ item }: { item: Movie }) => {
                         </View>
 
                         <Card.Actions>
-                            <Button onPress={() => router.push({ pathname: '/details/[id]', params: { id: item.id } })}>
+                            <Button mode="contained" onPress={() => router.push({ pathname: '/details/[id]', params: { id: item.id } })}>
                                 Ver Detalles
                             </Button>
                         </Card.Actions>
@@ -54,7 +55,7 @@ const MovieCard = ({ item }: { item: Movie }) => {
 
 const styles = StyleSheet.create({
     card: {
-        position: 'relative', 
+        position: 'relative',
         backgroundColor: '#1E1E1E',
         marginVertical: 8,
         marginHorizontal: 12,
@@ -92,8 +93,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 5,
     },
-    ratingCircle: {
-        backgroundColor: '#415A77',
+    ratingSquare: {
         borderRadius: 5,
         padding: 5,
     },

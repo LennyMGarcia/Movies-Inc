@@ -1,15 +1,17 @@
 
 import MovieList from '@/components/movies/MovieList';
+import ScreenContainer from '@/components/ScreenContainer';
 import { useUpcomingMovies } from '@/hooks/useUpcomingMovies';
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import { Appbar } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 const TabTwoScreen = () => {
   const { movies, loading } = useUpcomingMovies();  
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <ScreenContainer  style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
         <Appbar.Header>
           <Appbar.Content
@@ -23,7 +25,7 @@ const TabTwoScreen = () => {
         </Appbar.Header>
         <MovieList movies={movies}  loading={loading} title='Release Movies'/>
       </View>
-    </SafeAreaView>
+      </ScreenContainer>
   );
 };
 
