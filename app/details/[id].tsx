@@ -34,7 +34,6 @@ export default function DetailsScreen() {
 
     const displayRating = Math.round(rating / 2); 
 
-
     const imageUrl = "https://image.tmdb.org/t/p/w200";
 
     const submitRating = async (movieId: number, userRating: number) => {
@@ -58,7 +57,6 @@ export default function DetailsScreen() {
             });
 
             const data = await response.json();
-            console.log("Respuesta de la API al votar:", data);
 
             if (response.ok) {
                 console.log('Rating submitted successfully');

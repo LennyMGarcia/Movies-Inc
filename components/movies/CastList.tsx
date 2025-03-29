@@ -1,8 +1,7 @@
-import { CastMember } from '@/Types/movieInterfaces';
+import { CastMember } from '@/types/movieInterfaces';
 import { View, Text, Image, FlatList, StyleSheet, SafeAreaView } from 'react-native';
 
 const imageUrl = "https://image.tmdb.org/t/p/w200";
-
 
 const CastList = ({ cast }: { cast: CastMember[] }) => {
     if (!cast || cast.length === 0) {

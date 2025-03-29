@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Text, StyleSheet, SafeAreaView } from 'react-native';
 import { Card, Title, Paragraph, Button, useTheme } from 'react-native-paper';
 import { StarRatingDisplay } from "react-native-star-rating-widget";
-import { Movie } from '@/Types/movieInterfaces';
+import { Movie } from '@/types/movieInterfaces';
 import { useRouter } from 'expo-router';
 import FavouriteButton from '../FavouriteButton';
 
@@ -11,45 +11,43 @@ const MovieCard = ({ item }: { item: Movie }) => {
     const { colors } = useTheme();
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <Card style={styles.card}>
-                <FavouriteButton movieId={Number(item.id)} />
+        <Card style={styles.card}>
+            <FavouriteButton movieId={Number(item.id)} />
 
-                <View style={styles.cardContent}>
-                    <Image
-                        source={{ uri: `https://image.tmdb.org/t/p/w500${item.poster_path}` }}
-                        style={styles.image}
-                    />
-                    <View style={styles.textContainer}>
-                        <Title style={styles.movieTitle}>{item.title}</Title>
-                        <Paragraph style={styles.text}>
-                            <Text style={styles.boldText}>Release Date: </Text>
-                            {item.release_date}
-                        </Paragraph>
+            <View style={styles.cardContent}>
+                <Image
+                    source={{ uri: `https://image.tmdb.org/t/p/w500${item.poster_path}` }}
+                    style={styles.image}
+                />
+                <View style={styles.textContainer}>
+                    <Title style={styles.movieTitle}>{item.title}</Title>
+                    <Paragraph style={styles.text}>
+                        <Text style={styles.boldText}>Release Date: </Text>
+                        {item.release_date}
+                    </Paragraph>
 
-                        <View style={styles.ratingContainer}>
-                            <View style={{ ...styles.ratingSquare, backgroundColor: colors.primary }}>
-                                <Text style={styles.ratingText}>{(item.vote_average).toFixed(1)}</Text>
-                            </View>
-
-                            <View style={styles.starContainer}>
-                                <StarRatingDisplay
-                                    rating={item.vote_average / 2}
-                                    starSize={18}
-                                    color="gold"
-                                />
-                            </View>
+                    <View style={styles.ratingContainer}>
+                        <View style={{ ...styles.ratingSquare, backgroundColor: colors.primary }}>
+                            <Text style={styles.ratingText}>{(item.vote_average).toFixed(1)}</Text>
                         </View>
 
-                        <Card.Actions>
-                            <Button mode="contained" onPress={() => router.push({ pathname: '/details/[id]', params: { id: item.id } })}>
-                                Ver Detalles
-                            </Button>
-                        </Card.Actions>
+                        <View style={styles.starContainer}>
+                            <StarRatingDisplay
+                                rating={item.vote_average / 2}
+                                starSize={18}
+                                color="gold"
+                            />
+                        </View>
                     </View>
+
+                    <Card.Actions>
+                        <Button mode="contained" onPress={() => router.push({ pathname: '/details/[id]', params: { id: item.id } })}>
+                            Ver Detalles
+                        </Button>
+                    </Card.Actions>
                 </View>
-            </Card>
-        </SafeAreaView>
+            </View>
+        </Card>
     );
 };
 

@@ -1,16 +1,17 @@
-
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import MovieList from '@/components/movies/MovieList';
 import ScreenContainer from '@/components/ScreenContainer';
 import { useUpcomingMovies } from '@/hooks/useUpcomingMovies';
+import { Try } from 'expo-router/build/views/Try';
 import React from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 import { Appbar } from 'react-native-paper';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-
-const TabTwoScreen = () => {
+const HomeScreen = () => {
   const { movies, loading } = useUpcomingMovies();  
   return (
+    <Try catch={ErrorBoundary}>
+
     <ScreenContainer  style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
         <Appbar.Header>
@@ -26,10 +27,11 @@ const TabTwoScreen = () => {
         <MovieList movies={movies}  loading={loading} title='Release Movies'/>
       </View>
       </ScreenContainer>
+    </Try>
   );
 };
 
-export default TabTwoScreen;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   title: {
@@ -41,6 +43,6 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   incText: {
-    color: 'blue',
+    color: '#33f3ff',
   },
 });

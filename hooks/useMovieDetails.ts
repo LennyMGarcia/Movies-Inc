@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ServerLinks from '@/api/serverLinks';
-import { Movie } from '@/Types/movieInterfaces';
+import { Movie } from '@/types/movieInterfaces';
 
 export function useMovieDetails(id: string | string[]) {
     const [movie, setMovie] = useState<Movie | null>(null);

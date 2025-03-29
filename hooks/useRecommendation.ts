@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ServerLinks from '@/api/serverLinks';
-import { RecommendedMovie } from '@/Types/movieInterfaces';
+import { RecommendedMovie } from '@/types/movieInterfaces';
 
 export function useRecommendations(id: string | string[]) {
     const [recommendations, setRecommendations] = useState<RecommendedMovie[]>([]);

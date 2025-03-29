@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ServerLinks from '@/api/serverLinks';
-import { CastMember } from '@/Types/movieInterfaces';
+import { CastMember } from '@/types/movieInterfaces';
 
 export function useCast(id: string | string[]) {
     const [cast, setCast] = useState<CastMember[]>([]);

@@ -37,7 +37,7 @@ export default function RootLayout() {
       <Provider store={store}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen name="+not-found" options={{ headerShown: false }}/>
         <Stack.Screen name="details/[id]"  options={{ headerShown: false, }}/>
       </Stack>
       <StatusBar style="auto" />

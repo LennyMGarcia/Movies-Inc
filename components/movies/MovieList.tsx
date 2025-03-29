@@ -3,25 +3,23 @@ import { FlatList, View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import { Appbar } from 'react-native-paper';
 import MovieCard from './MovieCard';
 import { useUpcomingMovies } from '@/hooks/useUpcomingMovies';
-import { Movie } from '@/Types/movieInterfaces';
+import { Movie } from '@/types/movieInterfaces';
 
-
-const MovieList = ({movies, loading, title}:{movies: Movie[], loading:boolean, title:string}) => {
+const MovieList = ({ movies, loading, title }: { movies: Movie[], loading: boolean, title: string }) => {
+    
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <View style={styles.container}>
-                <Text style={{ color: "white", fontSize: 24, padding: 10 }}>{title}</Text>
-                {loading ? (
-                    <Text style={styles.loadingText}>Loading...</Text>
-                ) : (
-                    <FlatList
-                        data={movies}
-                        renderItem={({ item }) => <MovieCard item={item} />}
-                        keyExtractor={(item) => item.id.toString()}
-                    />
-                )}
-            </View>
-        </SafeAreaView>
+        <View style={styles.container}>
+            <Text style={{ color: "white", fontSize: 24, padding: 10 }}>{title}</Text>
+            {loading ? (
+                <Text style={styles.loadingText}>Loading...</Text>
+            ) : (
+                <FlatList
+                    data={movies}
+                    renderItem={({ item }) => <MovieCard item={item} />}
+                    keyExtractor={(item) => item.id.toString()}
+                />
+            )}
+        </View>
     );
 };
 

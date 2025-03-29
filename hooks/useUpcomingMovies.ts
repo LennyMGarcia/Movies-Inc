@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Movie } from '@/Types/movieInterfaces';
+import { Movie } from '@/types/movieInterfaces';
 import ServerLinks from '@/api/serverLinks';
 
 export function useUpcomingMovies() {

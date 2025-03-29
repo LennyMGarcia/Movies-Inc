@@ -1,4 +1,4 @@
-import { RecommendedMovie } from '@/Types/movieInterfaces';
+import { RecommendedMovie } from '@/types/movieInterfaces';
 import { View, Text, Image, FlatList, StyleSheet } from 'react-native';
 
 const imageUrl = "https://image.tmdb.org/t/p/w200";
