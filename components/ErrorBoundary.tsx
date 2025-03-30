@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { type ErrorBoundaryProps } from 'expo-router';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { ThemedText } from './ThemedText';
+import { ThemedText } from './expo-componentes/ThemedText';
 
 export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
   return (

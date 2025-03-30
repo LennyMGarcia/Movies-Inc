@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import ServerLinks from '@/api/serverLinks';
 import { Movie } from '@/types/movieInterfaces';
+import * as Sentry from '@sentry/react-native'
 
 export function useMovieDetails(id: string | string[]) {
     const [movie, setMovie] = useState<Movie | null>(null);
@@ -19,7 +20,10 @@ export function useMovieDetails(id: string | string[]) {
                 setMovie(movieData);
                 setRating(movieData.vote_average || 0);
             } catch (error) {
-                console.error('Error fetching movie details:', error);
+                Sentry.captureException(error);
+                Sentry.captureMessage('Error fetching movie details', {
+                    level: 'error',  
+                });
             }
             setLoading(false);
         };

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Movie } from '@/types/movieInterfaces';
 import ServerLinks from '@/api/serverLinks';
+import * as Sentry from '@sentry/react-native';
 
 export function useUpcomingMovies() {
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -23,7 +24,11 @@ export function useUpcomingMovies() {
                 setMovies(sortedMovies);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching movies:', error);
+                Sentry.captureException(error);
+                Sentry.captureMessage('Error fetching movies', {
+                    level: 'error',  
+                });
+
                 setLoading(false);
             }
         };

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import ServerLinks from '@/api/serverLinks';
 import { RecommendedMovie } from '@/types/movieInterfaces';
+import * as Sentry from '@sentry/react-native'
 
 export function useRecommendations(id: string | string[]) {
     const [recommendations, setRecommendations] = useState<RecommendedMovie[]>([]);
@@ -15,7 +16,11 @@ export function useRecommendations(id: string | string[]) {
                 const recommendationData = await response.json();
                 setRecommendations(recommendationData.results);
             } catch (error) {
-                console.error('Error fetching recommendations:', error);
+
+                 Sentry.captureException(error);
+                 Sentry.captureMessage('Error fetching recommendations', {
+                    level: 'error',  
+                 });
             }
         };
         fetchData();

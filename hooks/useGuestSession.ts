@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ServerLinks from '@/api/serverLinks';
 import { setGuestSession } from '@/store/slices/guestSessionSlice';
+import * as Sentry from '@sentry/react-native'
 
 /**
  * Custom hook that manages the guest session for the app.
@@ -23,7 +24,7 @@ const useGuestSession = () => {
   useEffect(() => {
     const checkAndCreateGuestSession = async () => {
       const storedSession = await AsyncStorage.getItem('guestSession');
-      const expiresAt = await AsyncStorage.getItem('guestSessionExpiry'); 
+      const expiresAt = await AsyncStorage.getItem('guestSessionExpiry');
 
       if (storedSession && expiresAt) {
         const currentDate = new Date();
@@ -33,9 +34,9 @@ const useGuestSession = () => {
           await AsyncStorage.removeItem('guestSession');
           await AsyncStorage.removeItem('guestSessionExpiry');
           createNewSession();
-          
+
         } else {
-          dispatch(setGuestSession(storedSession)); 
+          dispatch(setGuestSession(storedSession));
         }
       } else {
         createNewSession();
@@ -51,13 +52,17 @@ const useGuestSession = () => {
 
         const data = await response.json();
         const sessionId = data.guest_session_id;
-        const expirationTime = new Date(data.expires_at); 
+        const expirationTime = new Date(data.expires_at);
 
         dispatch(setGuestSession(sessionId));
         await AsyncStorage.setItem('guestSession', sessionId);
-        await AsyncStorage.setItem('guestSessionExpiry', expirationTime.toString()); 
+        await AsyncStorage.setItem('guestSessionExpiry', expirationTime.toString());
       } catch (error) {
-        console.error('Error creating guest session:', error);
+        Sentry.captureException(error);
+        Sentry.captureMessage('Error creating guest session', {
+          level: 'error',
+        });
+
       }
     };
 

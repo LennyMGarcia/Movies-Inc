@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Link, Stack } from 'expo-router';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { ThemedText } from '@/components/ThemedText'; 
-import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/expo-componentes/ThemedText'; 
+import { ThemedView } from '@/components/expo-componentes/ThemedView';
 
 export default function NotFoundScreen() {
   return (

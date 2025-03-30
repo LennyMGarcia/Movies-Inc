@@ -1,4 +1,4 @@
-import { ExpoRouter } from 'expo-router';
+
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -12,12 +12,28 @@ import { theme } from '../theme/index'
 import { Provider } from 'react-redux';
 import { persistor, store } from '@/store/movieStore';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Slot, useNavigationContainerRef } from 'expo-router';
+import * as Sentry from '@sentry/react-native';
+import { isRunningInExpoGo } from 'expo';
 
+const navigationIntegration = Sentry.reactNavigationIntegration({
+  enableTimeToInitialDisplay: !isRunningInExpoGo(),
+});
+
+Sentry.init({
+  dsn: process.env.EXPO_PUBLIC_SENTRY_DNS,
+  debug: true, 
+  tracesSampleRate: 1.0, 
+  integrations: [
+    navigationIntegration,
+  ],
+  enableNativeFramesTracking: !isRunningInExpoGo(), 
+});
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
@@ -32,6 +48,14 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
+  const ref = useNavigationContainerRef();
+
+  useEffect(() => {
+    if (ref?.current) {
+      navigationIntegration.registerNavigationContainer(ref);
+    }
+  }, [ref]);
 
   return (
     
@@ -49,3 +73,5 @@ export default function RootLayout() {
     </PaperProvider>
   );
 }
+
+export default Sentry.wrap(RootLayout);

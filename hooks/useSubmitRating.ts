@@ -1,5 +1,6 @@
 import ServerLinks from "@/api/serverLinks";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Sentry from "@sentry/react-native"
 
 export default function useSubmitRating() {
     const submitRating = async (movieId: number, userRating: number) => {
@@ -19,7 +20,12 @@ export default function useSubmitRating() {
       });
   
       if (!response.ok) {
-        throw new Error("Failed to submit rating");
+        let errorMessage: string = "Failed to submit rating"
+        Sentry.captureMessage(errorMessage, {
+            level: 'error',  
+        });
+
+        throw new Error(errorMessage);
       }
   
       return "Rating submitted successfully!";

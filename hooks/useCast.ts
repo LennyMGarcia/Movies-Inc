@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import ServerLinks from '@/api/serverLinks';
 import { CastMember } from '@/types/movieInterfaces';
+import * as Sentry from '@sentry/react-native'
 
 export function useCast(id: string | string[]) {
     const [cast, setCast] = useState<CastMember[]>([]);
@@ -15,7 +16,10 @@ export function useCast(id: string | string[]) {
                 const castData = await response.json();
                 setCast(castData.cast);
             } catch (error) {
-                console.error('Error fetching cast:', error);
+                Sentry.captureException(error);
+                Sentry.captureMessage('Error fetching cast', {
+                    level: 'error',
+                });
             }
         };
         fetchData();

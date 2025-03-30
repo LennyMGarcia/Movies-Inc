@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ServerLinks from '@/api/serverLinks';
+import * as Sentry from '@sentry/react-native';  // Importa Sentry
 
 const useRating = (movieId: number, initialRating: number) => {
   const [rating, setRating] = useState(initialRating);
 
   const submitRating = async (userRating: number) => {
     const sessionId = await AsyncStorage.getItem('guestSession');
-    if (!sessionId) return console.error('No guest session available');
+    if (!sessionId) {
+      Sentry.captureMessage('No guest session available', { level: 'warning' });
+      return;
+    }
 
     try {
       const response = await fetch(ServerLinks.rateMovie(movieId, sessionId), {
@@ -20,13 +24,12 @@ const useRating = (movieId: number, initialRating: number) => {
       });
 
       if (response.ok) {
-        console.log('Rating submitted successfully');
         setRating(userRating);
       } else {
-        console.error('Failed to submit rating');
+        Sentry.captureMessage('Failed to submit rating', { level: 'error' });
       }
     } catch (error) {
-      console.error('Error submitting rating:', error);
+      Sentry.captureException(error);
     }
   };
 
@@ -34,3 +37,4 @@ const useRating = (movieId: number, initialRating: number) => {
 };
 
 export default useRating;
+
