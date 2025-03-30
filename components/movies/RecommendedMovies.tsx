@@ -14,7 +14,11 @@ const RecommendedMovies = ({ recommendations }: { recommendations: RecommendedMo
 
     const renderRecommendationItem = ({ item }: { item: RecommendedMovie }) => (
         <View style={styles.recommendationItem}>
-            <Image source={{ uri: item.poster_path ? `${imageUrl}${item.poster_path}` : 'https://i.ibb.co/HDq2F3vx/no-Poster-Available.webp' }} style={styles.recommendationImage} />
+            <Image
+            testID="recommendation-image"
+             source={{ uri: item.poster_path 
+                ? `${imageUrl}${item.poster_path}` 
+                : 'https://i.ibb.co/HDq2F3vx/no-Poster-Available.webp' }} style={styles.recommendationImage} />
             <Text style={styles.recommendedMovie}>
                 {item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}
             </Text>

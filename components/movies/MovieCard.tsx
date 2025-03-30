@@ -10,13 +10,18 @@ const MovieCard = ({ item }: { item: Movie }) => {
     const router = useRouter();
     const { colors } = useTheme();
 
+    const imageUrl = "https://image.tmdb.org/t/p/w200";
+
     return (
-        <Card style={styles.card}>
+        <Card testID="movie-card" style={styles.card}>
             <FavouriteButton movieId={Number(item.id)} />
 
             <View style={styles.cardContent}>
                 <Image
-                    source={{ uri: `https://image.tmdb.org/t/p/w500${item.poster_path}` }}
+                    testID='movie-image'
+                    source={{ uri: item.poster_path 
+                        ? `${imageUrl}${item.poster_path}` 
+                        : 'https://i.ibb.co/HDq2F3vx/no-Poster-Available.webp' }}
                     style={styles.image}
                 />
                 <View style={styles.textContainer}>

@@ -10,7 +10,11 @@ const CastList = ({ cast }: { cast: CastMember[] }) => {
 
     const renderCastItem = ({ item }: { item: CastMember }) => (
         <View style={styles.castItem}>
-            <Image source={{ uri: item.profile_path ? `${imageUrl}${item.profile_path}` : "https://i.ibb.co/WNg5ntkK/no-Cast-Available.webp" }} style={styles.castImage} />
+            <Image 
+             testID='cast-image'
+             source={{ uri: item.profile_path 
+             ? `${imageUrl}${item.profile_path}` 
+             : "https://i.ibb.co/WNg5ntkK/no-Cast-Available.webp" }} style={styles.castImage} />
             <Text style={styles.castName}>{item.name.length > 20 ? item.name.slice(0, 20) + '...' : item.name}</Text>
             <Text style={styles.castCharacter}>{item.character.length > 20 ? item.character.slice(0, 20) + '...' : item.character}</Text>
         </View>
