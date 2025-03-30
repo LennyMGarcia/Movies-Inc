@@ -6,7 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { useColorScheme } from '@/hooks/expo-hooks/useColorScheme';
 import { PaperProvider } from 'react-native-paper';
 import { theme } from '../theme/index'
 import { Provider } from 'react-redux';

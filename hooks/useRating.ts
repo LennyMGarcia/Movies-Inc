@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ServerLinks from '@/api/serverLinks';
-import * as Sentry from '@sentry/react-native';  // Importa Sentry
+import * as Sentry from '@sentry/react-native';
 
 const useRating = (movieId: number, initialRating: number) => {
   const [rating, setRating] = useState(initialRating);
