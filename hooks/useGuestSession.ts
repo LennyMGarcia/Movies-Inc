@@ -4,7 +4,20 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import ServerLinks from '@/api/serverLinks';
 import { setGuestSession } from '@/store/slices/guestSessionSlice';
 
+/**
+ * Custom hook that manages the guest session for the app.
+ * 
+ * - It checks if a valid guest session exists in AsyncStorage and if not, creates a new session.
+ * - The session is stored in AsyncStorage along with its expiration time to ensure the session remains valid.
+ * - The hook runs on component mount and will automatically create a new guest session if needed.
+ * - Uses the Redux dispatch function to set the guest session in the global state.
+ * 
+ * @function useGuestSession
+ * @returns {void} This hook doesn't return any value.
+ */
+
 const useGuestSession = () => {
+
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -11,7 +11,6 @@ const HomeScreen = () => {
   const { movies, loading } = useUpcomingMovies();  
   return (
     <Try catch={ErrorBoundary}>
-
     <ScreenContainer  style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
         <Appbar.Header>

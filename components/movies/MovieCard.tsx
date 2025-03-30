@@ -42,7 +42,7 @@ const MovieCard = ({ item }: { item: Movie }) => {
 
                     <Card.Actions>
                         <Button mode="contained" onPress={() => router.push({ pathname: '/details/[id]', params: { id: item.id } })}>
-                            Ver Detalles
+                            View details
                         </Button>
                     </Card.Actions>
                 </View>

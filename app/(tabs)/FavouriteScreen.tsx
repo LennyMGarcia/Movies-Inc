@@ -32,7 +32,7 @@ const FavouriteScreen = () => {
 
           {favoriteMovies.length === 0 ? (
             <View style={styles.emptyContainer}>
-              <Text style={styles.emptyText}>No hay elementos favoritos</Text>
+              <Text style={styles.emptyText}>No favorite items</Text>
             </View>
           ) : (
             <MovieList movies={favoriteMovies} loading={loading} title='Favourites Movies' />

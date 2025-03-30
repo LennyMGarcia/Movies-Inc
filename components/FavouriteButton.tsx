@@ -5,7 +5,6 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign'; 
 import { useDispatch, useSelector } from 'react-redux';
 
-
 interface FavouriteButtonProps {
   movieId: number; 
   size?: number,
@@ -14,6 +13,7 @@ interface FavouriteButtonProps {
 }
 
 const FavouriteButton: React.FC<FavouriteButtonProps> = ({ movieId, size, top, right }) => {
+
   const dispatch = useDispatch();
   const favoriteIds = useSelector((state: RootState) => state.favourites.ids); 
 

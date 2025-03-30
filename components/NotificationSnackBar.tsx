@@ -22,9 +22,6 @@ const NotificationSnackbar: React.FC<NotificationSnackbarProps> = ({
         onDismiss={onDismiss}
         action={{
           label: "Undo",
-          onPress: () => {
-            console.log("Undo action");
-          },
           color: "#FFFFFF",
         }}
         style={[styles.snackbar, { backgroundColor: color }]}
