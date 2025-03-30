@@ -24,18 +24,18 @@ export default function DetailsScreen() {
     const [snackbarColor, setSnackbarColor] = useState("green");
 
     useGuestSession();
-    const { colors } = useTheme(); 
+    const { colors } = useTheme();
 
     const { movie, loading, rating, setRating } = useMovieDetails(item.id);
     const { cast } = useCast(item.id);
     const { recommendations } = useRecommendations(item.id);
 
-    const displayRating = Math.round(rating / 2); 
+    const displayRating = Math.round(rating / 2);
 
     const imageUrl = "https://image.tmdb.org/t/p/w200";
 
     const submitRating = async (movieId: number, userRating: number) => {
-        const sessionId = await AsyncStorage.getItem('guestSession'); 
+        const sessionId = await AsyncStorage.getItem('guestSession');
 
         if (!sessionId) {
             console.error('No guest session available');
@@ -47,10 +47,10 @@ export default function DetailsScreen() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',
-                    ...ServerLinks.getHeaders(), 
+                    ...ServerLinks.getHeaders(),
                 },
                 body: JSON.stringify({
-                    value: userRating, 
+                    value: userRating,
                 }),
             });
 
@@ -76,68 +76,70 @@ export default function DetailsScreen() {
     };
 
     const handleRatingChange = async (newDisplayRating: number) => {
-        const newRating = Math.round(newDisplayRating * 2); 
+        const newRating = Math.round(newDisplayRating * 2);
         setRating(newRating);
         await submitRating(Number(item.id), newRating)
     };
 
     if (loading) {
         return (
-            <View style={styles.center}>
-                <ActivityIndicator size="large" color="#0000ff" />
+            <View style={styles.container} >
+                <View style={styles.center}>
+                    <ActivityIndicator size="large" color="#0000ff" />
+                </View>
             </View>
         );
     }
 
     return (
         <ScreenContainer style={{ flex: 1 }}>
-        <ScrollView style={styles.container}>
-            <BackButton />
-            <FavouriteButton movieId={Number(item.id)} size={35} top={30} />
-            
-            <Image
-                source={{ uri: `${imageUrl}${movie?.poster_path}` }}
-                style={{ width, height: height * 0.60, ...styles.detailImage }}
-            />
+            <ScrollView style={styles.container}>
+                <BackButton />
+                <FavouriteButton movieId={Number(item.id)} size={35} top={30} />
 
-            <Text style={styles.title}>{movie?.title}</Text>
-            <Text style={styles.movieDetails}>{movie?.status?.split('-')[0]} • {movie?.release_date?.split('-')[0]}</Text>
-            <Text style={styles.movieDetails}>{movie?.runtime} min</Text>
+                <Image
+                    source={{ uri: `${imageUrl}${movie?.poster_path}` }}
+                    style={{ width, height: height * 0.60, ...styles.detailImage }}
+                />
 
-            <View style={styles.genresContainer}>
-                {movie?.genres?.map((g, index) => (
-                    <View key={index} style={styles.genreTag}>
-                        <Text style={styles.genreText}>{g.name}</Text>
-                    </View>
-                ))}
-            </View>
+                <Text style={styles.title}>{movie?.title}</Text>
+                <Text style={styles.movieDetails}>{movie?.status?.split('-')[0]} • {movie?.release_date?.split('-')[0]}</Text>
+                <Text style={styles.movieDetails}>{movie?.runtime} min</Text>
 
-            <Text style={styles.overview}>{movie?.overview}</Text>
-            <View style={styles.ratingContainer}>
-                <View style={{...styles.ratingSquare, backgroundColor: colors.primary,}}>
-                    <Text style={styles.ratingText}>{rating?.toFixed(1)}</Text>
+                <View style={styles.genresContainer}>
+                    {movie?.genres?.map((g, index) => (
+                        <View key={index} style={styles.genreTag}>
+                            <Text style={styles.genreText}>{g.name}</Text>
+                        </View>
+                    ))}
                 </View>
-                <StarRating
-                    rating={displayRating}
-                    starSize={30}
-                    color="gold"
-                    onChange={handleRatingChange} />
-            </View>
 
-            <Text style={styles.sectionTitle}>Casting</Text>
-            <CastList cast={cast} />
+                <Text style={styles.overview}>{movie?.overview}</Text>
+                <View style={styles.ratingContainer}>
+                    <View style={{ ...styles.ratingSquare, backgroundColor: colors.primary, }}>
+                        <Text style={styles.ratingText}>{rating?.toFixed(1)}</Text>
+                    </View>
+                    <StarRating
+                        rating={displayRating}
+                        starSize={30}
+                        color="gold"
+                        onChange={handleRatingChange} />
+                </View>
 
-            <Text style={styles.sectionTitle}>Recommended Movies</Text>
-            <RecommendedMovies recommendations={recommendations} />
-            <NotificationSnackbar
-                message={snackbarMessage}
-                color={snackbarColor}
-                visible={snackbarVisible}
-                onDismiss={() => setSnackbarVisible(false)}
-            />
+                <Text style={styles.sectionTitle}>Casting</Text>
+                <CastList cast={cast} />
 
-        </ScrollView>
-    </ScreenContainer>
+                <Text style={styles.sectionTitle}>Recommended Movies</Text>
+                <RecommendedMovies recommendations={recommendations} />
+                <NotificationSnackbar
+                    message={snackbarMessage}
+                    color={snackbarColor}
+                    visible={snackbarVisible}
+                    onDismiss={() => setSnackbarVisible(false)}
+                />
+
+            </ScrollView>
+        </ScreenContainer>
     );
 }
 
@@ -152,11 +154,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    detailImage:{
-        resizeMode: "cover", 
-        borderBottomLeftRadius: 50, 
+    detailImage: {
+        resizeMode: "cover",
+        borderBottomLeftRadius: 50,
         borderBottomRightRadius: 50,
-        
+
     },
     movieDetails: {
         fontSize: 18,
