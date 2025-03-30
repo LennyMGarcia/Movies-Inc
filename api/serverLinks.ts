@@ -1,11 +1,10 @@
-
 class ServerLinks {
     private static BaseUrl = "https://api.themoviedb.org/3/";
-    public static ApiKey = process.env.EXPO_PUBLIC_API_KEY
+    public static API_KEY = process.env.EXPO_PUBLIC_API_KEY
   
   public static getHeaders(accept: string = "application/json") {
     return {
-      'Authorization': `Bearer ${this.ApiKey}`,
+      'Authorization': `Bearer ${this.API_KEY}`,
       'Accept': accept, 
     };
   }
