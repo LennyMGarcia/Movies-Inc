@@ -11,9 +11,10 @@ const theme = {
     surface: '#1B265B', 
     text: '#E0E1DD', 
     placeholder: '#E0E1DD',  
-    notification: '#FF5722',  
+    notification: '#FF5720',  
   },
   roundness: 4,  
+
 };
 
 export { theme };
