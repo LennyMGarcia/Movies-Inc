@@ -15,11 +15,13 @@ describe('CastList Component', () => {
         name: 'Actor 1',
         character: 'Character 1',
         profile_path: '/path/to/image1.jpg',
+
       },
       {
         name: 'Actor 2',
         character: 'Character 2',
         profile_path: '/path/to/image2.jpg',
+
       },
     ];
 
@@ -38,6 +40,7 @@ describe('CastList Component', () => {
         name: longName,
         character: 'Character 1',
         profile_path: '/path/to/image.jpg',
+
       },
     ];
 
@@ -52,6 +55,7 @@ describe('CastList Component', () => {
         name: 'Actor 1',
         character: 'Character 1',
         profile_path: '',
+
       },
     ];
 

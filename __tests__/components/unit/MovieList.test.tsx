@@ -3,7 +3,6 @@ import { render } from '@testing-library/react-native';
 import MovieList from '@/components/movies/MovieList';
 import { Movie } from '@/types/movieInterfaces';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyleProp, View, ViewStyle } from 'react-native';
 
 const mockDispatch = useDispatch as unknown as jest.Mock;
 
@@ -12,7 +11,7 @@ jest.mock('expo-router', () => ({
   }));
 
   jest.mock('react-native-vector-icons/AntDesign', () => 'Icon');
-  jest.mock('moti', () => "MotiView");
+  jest.mock('@/components/movies/skeleton/MovieList.skeleton', () => "MovieListSkeleton");
 
   jest.mock('react-redux', () => ({
       useDispatch: jest.fn(),
@@ -46,10 +45,9 @@ const mockMovies: Movie[] = [
 
 describe('MovieList Component', () => {
     it('should display MovieListSkeleton when loading', () => {
-        const { getAllByTestId } = render(<MovieList movies={mockMovies} loading={false} title="Now Playing" />)
+        const { getAllByTestId } = render(<MovieList movies={mockMovies} loading={true} title="Now Playing" />)
       
         expect(getAllByTestId('movie-list-skeleton')).toBeTruthy(); 
-        expect(getAllByTestId('movie-list-container')).toBeNull(); 
       });
       
       

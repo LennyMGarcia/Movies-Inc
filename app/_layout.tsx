@@ -15,6 +15,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Slot, useNavigationContainerRef } from 'expo-router';
 import * as Sentry from '@sentry/react-native';
 import { isRunningInExpoGo } from 'expo';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
@@ -22,12 +23,8 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
 
 Sentry.init({
   dsn: process.env.EXPO_PUBLIC_SENTRY_DNS,
-  debug: true, 
-  tracesSampleRate: 1.0, 
-  integrations: [
-    navigationIntegration,
-  ],
-  enableNativeFramesTracking: !isRunningInExpoGo(), 
+  debug: false,
+  sendDefaultPii: true,
 });
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -58,7 +55,7 @@ function RootLayout() {
   }, [ref]);
 
   return (
-    
+
     <PaperProvider theme={theme}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>

@@ -12,7 +12,8 @@
     "lint": "expo lint"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "testEnvironment": "jsdom"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
@@ -21,6 +22,7 @@
     "@react-navigation/native": "^7.0.14",
     "@reduxjs/toolkit": "^2.6.1",
     "@sentry/react-native": "^6.10.0",
+    "@testing-library/react": "^16.2.0",
     "expo": "~52.0.41",
     "expo-blur": "~14.0.3",
     "expo-constants": "~17.0.8",

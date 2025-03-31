@@ -33,4 +33,8 @@ export default function useSubmitRating() {
   
     return { submitRating };
   }
+
+export function mockReturnValue(arg0: { submitRating: jest.Mock<any, any, any>; }) {
+    throw new Error('Function not implemented.');
+}
   
