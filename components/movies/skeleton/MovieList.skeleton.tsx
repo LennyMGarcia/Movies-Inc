@@ -6,7 +6,7 @@ const MovieListSkeleton = () => {
   return (
     <View testID="movie-list-skeleton" style={styles.container}>
       {[...Array(3)].map((_, index) => (
-        <View  key={index.toString() + 'm'} style={styles.skeletonContainer}>
+        <View  key={index.toString()} style={styles.skeletonContainer}>
           <MotiView
             from={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}

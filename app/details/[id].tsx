@@ -15,7 +15,7 @@ import NotificationSnackbar from '@/components/NotificationSnackBar';
 import CastList from '@/components/movies/CastList';
 import RecommendedMovies from '@/components/movies/RecommendedMovies';
 import FavouriteButton from '@/components/FavouriteButton';
-import BackButton from '@/components/backButton';
+import BackButton from '@/components/BackButton';
 import ScreenContainer from '@/components/ScreenContainer';
 
 /**

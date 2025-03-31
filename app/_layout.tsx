@@ -15,7 +15,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Slot, useNavigationContainerRef } from 'expo-router';
 import * as Sentry from '@sentry/react-native';
 import { isRunningInExpoGo } from 'expo';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
@@ -24,6 +23,7 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
 Sentry.init({
   dsn: process.env.EXPO_PUBLIC_SENTRY_DNS,
   debug: false,
+
   sendDefaultPii: true,
 });
 
@@ -36,23 +36,20 @@ function RootLayout() {
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
 
+  const ref = useNavigationContainerRef();
+
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+    if (ref?.current) {
+      navigationIntegration.registerNavigationContainer(ref);
+    }
+  }, [loaded, ref]);
 
   if (!loaded) {
     return null;
   }
-
-  const ref = useNavigationContainerRef();
-
-  useEffect(() => {
-    if (ref?.current) {
-      navigationIntegration.registerNavigationContainer(ref);
-    }
-  }, [ref]);
 
   return (
 

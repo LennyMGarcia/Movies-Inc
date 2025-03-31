@@ -4,7 +4,6 @@ import MovieCard from './MovieCard';
 import { Movie } from '@/types/movieInterfaces';
 import MovieListSkeleton from '@/components/movies/skeleton/MovieList.skeleton';
 
-
 const MovieList = ({ movies, loading, title }: { movies: Movie[], loading: boolean, title: string }) => {
     if (loading) {
         return (
