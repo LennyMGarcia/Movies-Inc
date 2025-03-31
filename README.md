@@ -23,6 +23,18 @@ https://youtube.com/shorts/JS3eul9ey90?si=eSLd1gO2iOYiF7pp
 | --- | --- |
 | ![details](https://github.com/user-attachments/assets/12dd5a58-9a36-4b84-9614-342d728079c9) | ![Details no imagen](https://github.com/user-attachments/assets/d06b3840-73cc-42ee-9f49-24165ef935c8) |
 
+## 🧪 Testing
+
+Realicé pruebas unitarias e integración para asegurar la estabilidad y calidad del código. Ejemplo de testing en la aplicación:
+
+![testing](https://github.com/user-attachments/assets/06225186-f550-408b-8a33-36f882ef1267)
+
+## 🛠️ Monitoreo de Errores con Sentry
+
+Utilicé **Sentry** para monitorear errores en tiempo real y recibir notificaciones de fallos en la aplicación, lo que permite resolver problemas rápidamente y mejorar la experiencia del usuario. A continuación, una representación del monitoreo de errores con Sentry:
+
+![errorSentry](https://github.com/user-attachments/assets/607206da-ed25-4d0b-868a-9c4e8289d783)
+
 
 
 
