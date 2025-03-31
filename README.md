@@ -1,50 +1,42 @@
-# Welcome to your Expo app 👋
+# 🎬 Movies Inc
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Movies Inc es una startup con la visión de convertirse en la plataforma definitiva para descubrir y reservar películas en cines. La primera fase del proyecto consiste en una aplicación móvil que permitirá a los usuarios encontrar películas de su interés.
 
-## Get started
+## 🚀 Características
+- 🔍 **Explorar películas**: Descubre películas populares y en estreno.
+- 🎞 **Detalles de películas**: Información detallada, incluyendo sinopsis y elenco.
+- ⭐ **Lista de favoritos**: Guarda películas que deseas ver más adelante.
 
-1. Install dependencies
+## 🏗️ Tecnologías Utilizadas
+- **React Native Expo**: Framework para desarrollar aplicaciones móviles con React Native de manera rápida y eficiente.
+- **Redux**: Librería para la gestión del estado global de la aplicación.
+- **Jest**: Framework de pruebas para asegurar la calidad y estabilidad del código.
+- **Sentry**: Herramienta para monitoreo y seguimiento de errores en tiempo real.
 
-   ```bash
-   npm install
-   ```
+## 📷 Multimedia
 
-2. Start the app
+### Video
+https://youtube.com/shorts/JS3eul9ey90?si=eSLd1gO2iOYiF7pp
 
-   ```bash
-    npx expo start
-   ```
+### Imagenes
+Preview de la aplicación
 
-In the output, you'll find options to open the app in a
+|  ![favorites](https://github.com/user-attachments/assets/282f22dd-5878-484e-a9f4-d24a69a83c37)|  ![home](https://github.com/user-attachments/assets/d06fda4b-c3dc-47da-ae6c-a944d9a80587)|
+| --- | --- |
+| ![details](https://github.com/user-attachments/assets/12dd5a58-9a36-4b84-9614-342d728079c9) | ![Details no imagen](https://github.com/user-attachments/assets/d06b3840-73cc-42ee-9f49-24165ef935c8) |
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Testing
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Realicé pruebas unitarias e integración para asegurar la estabilidad y calidad del código. Ejemplo de testing en la aplicación:
 
-## Get a fresh project
+![testing](https://github.com/user-attachments/assets/06225186-f550-408b-8a33-36f882ef1267)
 
-When you're ready, run:
+### 🛠️ Monitoreo de Errores con Sentry
 
-```bash
-npm run reset-project
-```
+Utilicé **Sentry** para monitorear errores en tiempo real y recibir notificaciones de fallos en la aplicación, lo que permite resolver problemas rápidamente y mejorar la experiencia del usuario. A continuación, una representación del monitoreo de errores con Sentry:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+![errorSentry](https://github.com/user-attachments/assets/607206da-ed25-4d0b-868a-9c4e8289d783)
 
-## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
