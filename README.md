@@ -15,13 +15,14 @@ Movies Inc es una startup con la visión de convertirse en la plataforma definit
 
 ## 📷 Multimedia
 
+### Video
+https://youtube.com/shorts/JS3eul9ey90?si=eSLd1gO2iOYiF7pp
+
 ### Imagenes
 |  ![favorites](https://github.com/user-attachments/assets/282f22dd-5878-484e-a9f4-d24a69a83c37)|  ![home](https://github.com/user-attachments/assets/d06fda4b-c3dc-47da-ae6c-a944d9a80587)|
 | --- | --- |
 | ![details](https://github.com/user-attachments/assets/12dd5a58-9a36-4b84-9614-342d728079c9) | ![Details no imagen](https://github.com/user-attachments/assets/d06b3840-73cc-42ee-9f49-24165ef935c8) |
 
-### Video
-https://youtube.com/shorts/JS3eul9ey90?si=eSLd1gO2iOYiF7pp
 
 
 
