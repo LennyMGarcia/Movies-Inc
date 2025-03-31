@@ -14,6 +14,8 @@ Movies Inc es una startup con la visión de convertirse en la plataforma definit
 - **Sentry**: Herramienta para monitoreo y seguimiento de errores en tiempo real.
 
 ## 📷 Multimedia
+### Expo Link
+https://movies-inc--u3evctrezz.expo.app/
 
 ### Video
 https://youtube.com/shorts/JS3eul9ey90?si=eSLd1gO2iOYiF7pp
